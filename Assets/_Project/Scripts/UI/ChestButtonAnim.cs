@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ public class ChestButtonAnim : MonoBehaviour
       private void OnTriggerEnter2D(Collider2D other)
      {
           canvasGroup.alpha = 1;
-          _pulse = button.transform.DOScale(1.1f, duration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+          _pulse = button.transform.DOScale(scale, duration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
      }
 
      private void OnTriggerExit2D(Collider2D other)
