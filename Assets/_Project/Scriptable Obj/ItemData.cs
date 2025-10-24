@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using Zenject;
 [CreateAssetMenu(fileName = "New Item", menuName = "Items/Item Data")]
 public class ItemData : ScriptableObject
 {
@@ -9,14 +7,14 @@ public class ItemData : ScriptableObject
     [SerializeField] private string itemName;
     [SerializeField] private ItemType itemType;
     [SerializeField] private string itemDescription;
-    
-    [Inject]
+
     public Sprite Sprite => sprite;
     public int MaxStackCount => maxStackCount;
     public string ItemDescription => itemDescription;
     public string Name => itemName;
     public ItemType ItemType => itemType;
     private string _lastSpriteName;
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if (sprite != null && sprite.name != _lastSpriteName)
@@ -32,7 +30,7 @@ public class ItemData : ScriptableObject
         }
     }
 }
-
+#endif
 public enum ItemType
 {
     CraftItem,
